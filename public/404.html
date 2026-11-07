@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Handbill</title>
+    <script>
+      // GitHub Pages serves this file for any deep link. Remember where the
+      // visitor was headed, then load the app from its base path.
+      (function () {
+        try {
+          sessionStorage.setItem('handbill.redirect', location.pathname + location.search + location.hash)
+        } catch (e) {}
+        location.replace('/handbill/')
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>

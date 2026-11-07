@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handbill: gigs and events in Bhubaneswar</title>
+    <meta
+      name="description"
+      content="Handbill lists gigs, workshops, talks and markets in Bhubaneswar. Pick a night and hold a seat in this browser."
+    />
+    <meta name="theme-color" content="#eae3d2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#232019" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Six+Caps&family=Bevan&family=Archivo+Narrow:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Set the colourway before first paint so a dark-mode visitor never sees a flash of buff.
+      (function () {
+        try {
+          var saved = localStorage.getItem('handbill.theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          var mode = saved || (prefersDark ? 'dark' : 'light')
+          document.documentElement.dataset.theme = mode
+        } catch (e) {}
+      })();
+
+      // Restore the path a GitHub Pages 404 redirected from (see public/404.html).
+      (function () {
+        try {
+          var back = sessionStorage.getItem('handbill.redirect')
+          if (back) {
+            sessionStorage.removeItem('handbill.redirect')
+            history.replaceState(null, '', back)
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
