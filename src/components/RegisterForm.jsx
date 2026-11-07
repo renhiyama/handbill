@@ -108,8 +108,8 @@ export default function RegisterForm({ event }) {
             </dd>
           </div>
           <div>
-            <dt>Paid</dt>
-            <dd>{formatPrice(bookedEvent.price * booking.seats)}</dd>
+            <dt>Price</dt>
+            <dd>{formatPrice(bookedEvent.price * booking.seats)} at the door</dd>
           </div>
         </dl>
 

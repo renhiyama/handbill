@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Countdown from '../components/Countdown'
 import EventCard from '../components/EventCard'
@@ -21,6 +21,11 @@ export default function Home() {
   const [params, setParams] = useSearchParams()
   const query = params.get('q') ?? ''
   const category = params.get('cat') ?? 'All'
+  const [text, setText] = useState(query)
+
+  useEffect(() => {
+    setText(query)
+  }, [query])
   const registrations = useRegistrations()
   const feature = nextEvent()
 
@@ -104,8 +109,11 @@ export default function Home() {
                   <input
                     id="bill-search"
                     type="search"
-                    value={query}
-                    onChange={(changeEvent) => update({ q: changeEvent.target.value })}
+                    value={text}
+                    onChange={(changeEvent) => {
+                      setText(changeEvent.target.value)
+                      update({ q: changeEvent.target.value })
+                    }}
                     placeholder="Search by night, venue or area"
                     autoComplete="off"
                   />
